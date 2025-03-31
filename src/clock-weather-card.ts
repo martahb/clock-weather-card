@@ -72,6 +72,19 @@ export class ClockWeatherCard extends LitElement {
 
   constructor () {
     super()
+    this.shadowRoot.innerHTML = `
+      <style>
+        /* ... (Existing styles) ... */
+      </style>
+      <div id="content"></div>
+    `;
+    this.contentDiv = this.shadowRoot.getElementById('content');
+    this.displayClock = true; // Added state to track what to display
+    this.updateContent();
+    setInterval(() => {
+      this.displayClock = !this.displayClock; // Toggle display
+      this.updateContent();
+    }, 5000); // Switch every 5 seconds
     this.currentDate = DateTime.now()
     const msToNextSecond = (1000 - this.currentDate.millisecond)
     setTimeout(() => setInterval(() => { this.currentDate = DateTime.now() }, 1000), msToNextSecond)
