@@ -74,7 +74,7 @@ export class ClockWeatherCard extends LitElement {
     super()
     this.shadowRoot.innerHTML = `
       <style>
-        /* ... (Existing styles) ... */
+        clock-weather-card-today-right
       </style>
       <div id="content"></div>
     `;
